@@ -40,7 +40,7 @@ public class GetMethodQuiz08 extends HttpServlet{
 						
 					}
 					
-					
+					//주석추가 git push에 내용
 				}
 				
 		}
