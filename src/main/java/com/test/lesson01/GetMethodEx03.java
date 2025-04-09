@@ -27,7 +27,7 @@ public class GetMethodEx03 extends HttpServlet{
 		
 // JSON(javascript Object Notation)으로 응답 body 구성
 // {"user_id":"jihyung97","name":"유지형"}	
-		out.print("{\"user_id":\"" + userId + "\")
+		
 
 	}
 }

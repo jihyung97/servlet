@@ -37,6 +37,7 @@ public class GetMethodQuiz08 extends HttpServlet{
 						}
 						out.print(s[s.length - 1]);
 						out.print("<br>");
+						out.println(value.replace(search, "<b>" + search + "</b>"));
 						
 					}
 					
