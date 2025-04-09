@@ -10,17 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UrlMappingQuiz02 extends HttpServlet {
-	@Override
-	public void doGet(HttpServletRequest request, 
-					HttpServletResponse response) throws IOException{
-		
-		Date now = new Date();
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/plain");
-		PrintWriter out = response.getWriter();
-		SimpleDateFormat sdf = new SimpleDateFormat("현재시간은 HH시 mm분 ss초 입니다.");
-		out.println(sdf.format(now));
-		
-	}
 
+	@Override
+	public void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		
+		// response header
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("utf-8");
+		
+		PrintWriter out = response.getWriter();
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("현재 시간은 HH시 mm분 ss초 입니다.");
+		out.print(sdf.format(date));
+	}
 }
+

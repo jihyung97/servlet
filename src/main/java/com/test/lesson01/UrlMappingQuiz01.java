@@ -9,21 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+public class UrlMappingQuiz01 extends HttpServlet {
 
-
-
-public class UrlMappingQuiz01 extends HttpServlet{
-	
 	@Override
-	public void doGet(HttpServletRequest request, 
-					HttpServletResponse response) throws IOException{
+	public void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		
-		Date now = new Date();
+		// response header
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/plain");
-		PrintWriter out = response.getWriter();
-		SimpleDateFormat sdf = new SimpleDateFormat("현재시간은 HH시 mm분 ss초 입니다.");
-		out.println(sdf.format(now));
 		
+		// 날짜 객체
+		Date now = new Date();
+		
+		// 출력  "오늘의 날짜는 2025년 4월 3일"
+		PrintWriter out = response.getWriter();
+		out.print("오늘의 날짜는 ");
+		// 포맷 변환
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 M월 d일");
+		out.println(sdf.format(now));
 	}
 }

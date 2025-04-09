@@ -11,25 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/lesson01/quiz03")
-public class UrlMappingQuiz03 extends HttpServlet{
+public class UrlMappingQuiz03 extends HttpServlet {
+
 	@Override
-	public void doGet(HttpServletRequest request, 
-			HttpServletResponse response) throws IOException{
+	public void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
 		
-		PrintWriter out = response.getWriter();
-		//servlet: 자바(기본) + html
 		Date now = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("기사 입력 시간: yyyy/MM/dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/M/d HH:mm:ss");
+		
+		PrintWriter out = response.getWriter();
 		out.print("<html><head><title>마론달 뉴스</title></head><body>");
-		out.print("<h1>[단독] 고양이가 야옹해</h1><br>");
-		out.println(sdf.format(now));
-		out.print("<hr> 끝");
-		
-		
+		out.print("<h1>[단독] 고양이가 야옹해</h1>");
+		out.print("기사 입력 시간:" + sdf.format(now) + "<hr>끝");
 		out.print("</body></html>");
 	}
-
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -12,37 +13,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/lesson01/quiz08")
-public class GetMethodQuiz08 extends HttpServlet{
-	
-		public void doGet(HttpServletRequest request,
-				HttpServletResponse response) throws IOException {
-				response.setCharacterEncoding("utf-8");
-				response.setContentType("text/html");
-				PrintWriter out = response.getWriter();
-				List <String> list = new ArrayList<>(Arrays.asList(
-				        "강남역 최고 맛집 소개 합니다.", 
-				        "오늘 기분 좋은 일이 있었네요.", 
-				        "역시 맛집 데이트가 제일 좋네요. 맛집은 찾기 힘든만큼 맛있습니다. 맛집최고", 
-				        "집에 가는 길에 동네 맛집 가서 안주 사갑니다.",
-				        "자축 저 오늘 생일 이에요."));
+public class GetMethodQuiz08 extends HttpServlet {
+
+	@Override
+	public void doGet(HttpServletRequest request, 
+			HttpServletResponse response) throws IOException {
+		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		
+		// request param
+		String keyword = request.getParameter("keyword");
+		
+		List<String> list = new ArrayList<>(Arrays.asList(
+		        "강남역 최고 맛집 소개 합니다.", 
+		        "오늘 기분 좋은 일이 있었네요.", 
+		        "역시 맛집 데이트가 제일 좋네요.", 
+		        "집에 가는 길에 동네 맛집 가서 안주 사갑니다.",
+		        "자축 저 오늘 생일 이에요."));
+		
+		PrintWriter out = response.getWriter();
+		out.print("<html><head><title>검색 결과</title></head><body>");
+		
+		Iterator<String> iter = list.iterator();
+		while (iter.hasNext()) {
+			String line = iter.next();
+			
+			if (line.contains(keyword)) {
+				//out.print(line + "<br>");
 				
-				String search = request.getParameter("search");
-				for(String value : list) {
-					if(value.contains(search)) {
-						String[] s = value.split(search);
-						for(int i = 0 ; i < s.length - 1;i++) {
-							out.print(s[i]);
-							out.print("<b>" + search + "</b>");
-							
-						}
-						out.print(s[s.length - 1]);
-						out.print("<br>");
-						out.println(value.replace(search, "<b>" + search + "</b>"));
-						
-					}
-					
-					//주석추가 git push에 내용
-				}
+				// 풀이1) split
+//				String[] text = line.split(keyword);
+//				out.print(text[0] + "<b>" + keyword + "</b>" + text[1] + "<br>");
 				
+				// 풀이2) 맛집 -> <b>맛집</b>   replace
+				out.print(line.replace(keyword, "<b>" + keyword + "</b>") + "<br>");
+			}
 		}
+		
+		out.print("</body></html>");
+	}
 }
