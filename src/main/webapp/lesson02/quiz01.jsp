@@ -32,10 +32,20 @@
 	<%= avg %>
 	
 	<%
+	double score = 0;
 	List<String> scoreList = Arrays.asList(new String[]{"X", "O", "O", "O", "X", "O", "O", "O", "X", "O"});
-	for(int i = 0 ; i < scoreList.length;i++){
+	for(int i = 0 ; i < scoreList.size();i++){
+		if(scoreList.get(i) == "O"){
+			score++;
+			
+		}
+		
 		
 	}
+	score *= 100;
+	score /= scoreList.size();
+	
 	%>
+	<h1> 점수는 <%= score %></h1>	
 </body>
 </html>
