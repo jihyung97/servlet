@@ -11,23 +11,70 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<%
+		List<Map<String, Object>> list = new ArrayList<>();
+	    Map<String, Object> map = new HashMap<String, Object>() {
+	        { 
+	            put("id", 1000);
+	            put("title", "아몬드"); 
+	            put("author", "손원평"); 
+	            put("publisher", "창비");
+	            put("image", "https://99bookstores.com/cdn/shop/files/71ONmX8AjYL._SL1500.jpg?v=1701097433&width=713");
+	        } 
+	    };
+	    list.add(map);
+	
+	    map = new HashMap<String, Object>() {
+	        { 
+	            put("id", 1001);
+	            put("title", "사피엔스"); 
+	            put("author", "유발 하라리"); 
+	            put("publisher", "김영사");
+	            put("image", "https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/AGT/image/GmT_DpanqHWaAKxOkpSkWHw_1rk.jpeg");
+	        } 
+	    };
+	    list.add(map);
+	
+	    map = new HashMap<String, Object>() {
+	        { 
+	            put("id", 1002);
+	            put("title", "코스모스"); 
+	            put("author", "칼 세이건"); 
+	            put("publisher", "사이언스북");
+	            put("image", "https://inmun360.culture.go.kr/upload/board/image/41//2365841_201910030457529670.jpg");
+	        } 
+	    };
+	    list.add(map);
+	
+	    map = new HashMap<String, Object>() {
+	        { 
+	            put("id", 1003);
+	            put("title", "나미야 잡화점의 기적"); 
+	            put("author", "히가시노 게이고"); 
+	            put("publisher", "현대문학");
+	            put("image", "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/mlX/image/uj_gIWveH1N_j3ok9BP5t_0ds9M.jpg");
+	        } 
+	    };
+	    list.add(map);
+	%>
+	
 	<%
-		String title =request.getParameter("title");
-		String author = request.getParameter("author");
-		String publisher = request.getParameter("publisher");
-		String image = request.getParameter("image");
-	  
+		Map<String,Object> targetbook = null;
+		int id =Integer.valueOf(request.getParameter("id"));
+		for(Map<String,Object> book :list){
+			if((Integer)book.get("id") == id){
+				targerbook = book;
+			}
+		}
+		
+		
+		
+		
+	  	
      
 	%>
-	<div class="d-flex">
-		<div>
-			<img src=<%=image%>>
-		</div>
-		<div>
-			<h1><%=title %></h1>
-			<h2><%=author %></h2>
-		</div>
-	</div>
+	
 	
 </body>
 </html>

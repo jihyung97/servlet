@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
 	<%
@@ -16,7 +19,7 @@
 	            put("title", "아몬드"); 
 	            put("author", "손원평"); 
 	            put("publisher", "창비");
-	            put("image", "http://image.kyobobook.co.kr/images/book/xlarge/267/x9788936434267.jpg");
+	            put("image", "https://99bookstores.com/cdn/shop/files/71ONmX8AjYL._SL1500.jpg?v=1701097433&width=713");
 	        } 
 	    };
 	    list.add(map);
@@ -27,7 +30,7 @@
 	            put("title", "사피엔스"); 
 	            put("author", "유발 하라리"); 
 	            put("publisher", "김영사");
-	            put("image", "http://image.kyobobook.co.kr/images/book/xlarge/464/x9788934972464.jpg");
+	            put("image", "https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/AGT/image/GmT_DpanqHWaAKxOkpSkWHw_1rk.jpeg");
 	        } 
 	    };
 	    list.add(map);
@@ -38,7 +41,7 @@
 	            put("title", "코스모스"); 
 	            put("author", "칼 세이건"); 
 	            put("publisher", "사이언스북");
-	            put("image", "http://image.kyobobook.co.kr/images/book/xlarge/892/x9788983711892.jpg");
+	            put("image", "https://inmun360.culture.go.kr/upload/board/image/41//2365841_201910030457529670.jpg");
 	        } 
 	    };
 	    list.add(map);
@@ -49,7 +52,7 @@
 	            put("title", "나미야 잡화점의 기적"); 
 	            put("author", "히가시노 게이고"); 
 	            put("publisher", "현대문학");
-	            put("image", "http://image.kyobobook.co.kr/images/book/xlarge/194/x9788972756194.jpg");
+	            put("image", "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/mlX/image/uj_gIWveH1N_j3ok9BP5t_0ds9M.jpg");
 	        } 
 	    };
 	    list.add(map);
@@ -60,34 +63,38 @@
 		
 		<h1>검색결과</h1>
 		<table  class ="table text-center" border="1">
-		<tr >
-		
-			<th>메뉴</th>
-			<td>상호</td>
-			<td>별점</td>
-		</tr>
-		<%
-			for(int i = 0 ; i < list.size();i++){
-				
-					
-		%>
+		<thead>
 			<tr >
-		
-			<th><%=list.get(i).get("id") %></th>
-			<td><a href="/lesson02/quiz08_1.jsp?publisher=<%=list.get(i).get("publisher") %>&image=<%=list.get(i).get("image") %>
-			&title=<%=list.get(i).get("title")%>&author=<%=list.get(i).get("author")%>">
-					<img src="<%=list.get(i).get("image")%>" />
-				</a>
-			</td>
-			<td><%=list.get(i).get("title") %></td>
-		</tr>			
-		<%
 			
-				
-		}
+				<td>id</td>
+				<td>표지</td>
+				<td>제목</td>
+			</tr>
+		</thead>
+		<tbody>
+		<%
+			for(Map<String,Object> book : list){	
+		%>
+			<tr>
+				<td><%=book.get("id")%></td>
+				<td><img src="<%=book.get("image")%>" alt="책표지" width="100" height="100"></td>
+				<td><a href = "/lesson02/quiz08_1.jsp?id=<%=book.get("id")%>">  <%=book.get("title") %>  </a></td>
+			</tr>
+		
+		<%
+			}
+		%>
+		</tbody>
+		
+		
+		
+		
+		
 		
 	
-	%>			
+		
+		
+		
 	
 </div>
 	

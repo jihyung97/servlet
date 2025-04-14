@@ -47,10 +47,13 @@
 		</tr>
 		<%=list.get(0).get("point")%>
 		<%
-			double point = (double)list.get(0).get("point");
+		
+		
+			
 			for(int i = 0 ; i < list.size();i++){
+				boolean ispoint = list.get(i).get("point") != null;
 				if(list.get(i).get("menu").equals(getmenu) ){
-					if(point != null && list.get(i).get("point") < 4.0){
+					if(ispoint && (double)list.get(i).get("point") < 4.0){
 					
 		%>
 			<tr >
@@ -63,9 +66,11 @@
 					}else{
 						
 						%>
+						<tr >
 							<th><%=list.get(i).get("menu") %></th>
 							<td><%=list.get(i).get("name") %></td>
 							<td><%=list.get(i).get("point") %></td>
+						</tr>
 	<% 
 					}
 				

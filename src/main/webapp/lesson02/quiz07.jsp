@@ -21,7 +21,7 @@
 			<div class="d-flex align-items-end">
 				<input type="text" id="menu" name= "menu" class="form-control col-5" placeholder= "음식을 입력하세요">
 			</div>
-			<label><input type="checkbox" name="4point" value="4point">4점 이하 제외</label>
+			<label><input type="checkbox" name="point" value="point">4점 이하 제외</label>
 			<div>
 				<input type="submit" class="btn btn-primary btn-block col-2 ml-4" value="검색">
 			</div>
