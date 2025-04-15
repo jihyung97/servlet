@@ -13,6 +13,7 @@
 	header{height:80px}
 	nav{height:20px}
 	footer{height:80px}
+	#wrap{width:1000px}
 </style>
 </head>
 <body>
@@ -66,7 +67,7 @@
 	<div id="wrap" class="container">
 	<header><h1 class="text-warning">Sk Broadband IPTV</h1></header>
 		
-	<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+	<nav class="navbar navbar-expand-lg navbar-light bg-danger nav-fill w-100">
   	
   
 	  <div class="collapse navbar-collapse " id="navbarSupportedContent">

@@ -18,8 +18,11 @@
 </style>
 </head>
 <body>
+<%
+	String search = request.getParameter("search");
+%>
 	<div class="wrap container">
-		<header >
+		<header class="">
 			<div class="d-flex">
 	
 				<div><h1 class="text-success">Melong</h1></div>
@@ -27,7 +30,11 @@
 					
 					<form method="get" action="/lesson02/quiz10_1.jsp" class="d-flex" >
 						<div class="input-group mb-3">
-						  <input type="text" class="form-control" id="search" name= "search" >
+						<%if(search != null) {%>
+						  <input type="text" class="form-control" id="search" name= "search" placeholder="<%=search%>" >
+						  <%}else{ %>
+						  	 <input type="text" class="form-control" id="search" name= "search" >
+						  <%} %>
 						  <div class="input-group-append">
 						    <button type="submit" class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
 						  </div>
@@ -66,17 +73,9 @@
 				   
 				  </div>
 			</nav>
-		<div class="border border-success">
-			<div>
 			
-			</div>
-			<div>
-				<div></div>
-				<div></div>
-			</div>
-		</div>	
 		</menu>
-		<div class="border border-success">
+		<div>
 			<%
 			
 			// 아티스트 정보 
@@ -159,39 +158,44 @@
 			
 			%>
 			<h3>곡 목록</h3>
-			<table class="table">
-		<thead>
-			<tr>
-				<td>no</td>
-				<td>제목</td>
-				<td>앨범</td>
-			</tr>
-		</thead>
-		<tbody>
-			
-			
-				<%
-					for(int i = 0; i < musicList.size();i++){
-						Map<String,Object> music= musicList.get(i);
-				%>	
-							<tr>
-								<td><%=music.get("id")%></td>
-								<td><a href="/lesson02/quiz10_1.jsp?search=<%=music.get("title")%>"><%=music.get("title")%></a></td>
-								<td><%=music.get("album")%></td>
-							</tr>
-					
-				<%		
-						
-					}
+			<h3>곡정보</h3>
+			<%
 				
-				%>	
+				boolean isSearchNull = search == null;
+				Map<String,Object> music = null; 
+				if(!isSearchNull){
+				for(Map<String,Object> searching:musicList){
+					if(searching.get("title").equals(search)){
+						music = searching;
+						
+						%>
+						<div class="d-flex">
+							<div>
+								<img src="https://i.namu.wiki/i/bcp2pWg0NtPzdfog5Hy4Ry5_6D1B48_kWrYM_OXkwhjmLtw91AmgJ3R0UrtUW6sSClXXFpd0IQ0y95GCSeJdUg.webp" width="250" height="240">
+							</div>
+							<div>
+								<div class="d-flex"><h2><%=music.get("title") %></h2></div>
+								<div><span class="text-success"><b><%=music.get("singer") %></b></span></div>
+								<div>앨범 <%=music.get("album") %></div>
+								<div>시간 <%=(Integer)music.get("time")/60%>:<%=(Integer)music.get("time")%60%></div>
+								<div>작곡가 <%=music.get("composer") %></div>
+								<div>작사가 <%=music.get("lyricist") %></div>
+							</div>
+						</div>
+						
+			<% 			
+					}
+				}
+			}
+			%>
 			
-		</tbody>
-	
-	
-	
-	</table>
 			
+		</div>
+		<div>
+			<h2><b>가사</b></h2>
+			<hr>
+			<h3>가사 정보 없음</h3>
+			<hr>
 		</div>
 		<footer>copyright 2021</footer>
 	</div>
